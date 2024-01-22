@@ -51,6 +51,20 @@ public extension Model {
         }
     }
     
+    static func mapping(jsonObject: Any,
+                        decoder: JSONDecoder = JSONDecoder(),
+                        keyPath: String? = nil) -> Self? {
+        do {
+            if let jsonData = try? JSONSerialization.data(withJSONObject: jsonObject) {
+                return try mapping(jsonData: jsonData, as: self, decoder: decoder, keyPath: keyPath)
+            }else{
+                return nil
+            }
+        } catch {
+            return nil
+        }
+    }
+    
     
     func toData() -> Data? {
         let encoder = JSONEncoder()
