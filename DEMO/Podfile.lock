@@ -1,0 +1,16 @@
+PODS:
+  - Modelable (0.1.1)
+
+DEPENDENCIES:
+  - Modelable (from `../`)
+
+EXTERNAL SOURCES:
+  Modelable:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Modelable: e308b4d91197d71caa01e0f6c52d9d500c75c083
+
+PODFILE CHECKSUM: 7093d2f3b72d8a8f36cfcf9d0775edf3f4bb250a
+
+COCOAPODS: 1.14.3
