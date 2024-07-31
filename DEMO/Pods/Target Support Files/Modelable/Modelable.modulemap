@@ -1,6 +1,0 @@
-framework module Modelable {
-  umbrella header "Modelable-umbrella.h"
-
-  export *
-  module * { export * }
-}
