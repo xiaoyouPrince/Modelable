@@ -65,6 +65,16 @@ public extension Model {
         }
     }
     
+    static func mapping(jsonString: String,
+                        decoder: JSONDecoder = JSONDecoder(),
+                        keyPath: String? = nil) -> Self? {
+        
+        if let jsonData = jsonString.data(using: .utf8) {
+            return mapping(jsonData: jsonData, decoder: decoder, keyPath: keyPath)
+        } else {
+            return nil
+        }
+    }
     
     func toData() -> Data? {
         let encoder = JSONEncoder()
