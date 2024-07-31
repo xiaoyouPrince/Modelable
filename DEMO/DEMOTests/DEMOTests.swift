@@ -65,6 +65,30 @@ final class DEMOTests: XCTestCase {
         
         
         
+        var dic: [String: String] =
+        [
+            "name": "xiaoming",
+            "age": "6"
+        ]
+        
+        let person = Person.mapping(jsonObject: dic)
+        print("person = ", person)
+        
+        
+        dic["name"] = nil
+        let person2 = Person.mapping(jsonObject: dic)
+        print("person2 = ", person2)
+        
+        var dict2: [String: Codable] =
+        [
+            "name": "xiaoming",
+//            "age": "6"
+            "friend": [1, 3, 5]
+        ]
+        
+        let person3 = Person.mapping(jsonObject: dict2)
+        print("person3 = ", person3)
+        
     }
 
     func testPerformanceExample() throws {
@@ -74,6 +98,19 @@ final class DEMOTests: XCTestCase {
         }
     }
 
+}
+
+struct Person: Model {
+    var name: String = "none"
+    var age: Int
+    var friend: [Int]
+    var marred: Bool
+    var sub: FDnzT?
+    
+    
+    func didFinishMapping() {
+        print( "didFinishMapping --- ", self)
+    }
 }
 
 class FDnzT: Model {
@@ -91,3 +128,11 @@ class MyObj: Model {
     var vvv: CGFloat? = 0
 }
 
+
+protocol CodableJson {
+    
+}
+
+extension Dictionary: CodableJson where Key : Codable, Value: Model {
+    
+}
