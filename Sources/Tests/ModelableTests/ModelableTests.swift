@@ -1,24 +1,7 @@
-//
-//  DEMOTests.swift
-//  DEMOTests
-//
-//  Created by 渠晓友 on 2024/2/29.
-//
-
 import XCTest
-@testable import DEMO
-import Modelable
+@testable import Modelable
 
-final class DEMOTests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
+final class ModelableTests: XCTestCase {
     func testExample() throws {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
@@ -27,30 +10,30 @@ final class DEMOTests: XCTestCase {
         // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
         
         let jsonStr = """
-{
-  "FDnzT" : {
-    "nKIBe" : [
-      "asoak",
-      "VpADx",
-      "MuMbP"
-    ],
-    "knsKe" : true
-  },
-  "ZCJuS" : [
-    "USnLi",
-    "tPTLj",
-    "zIjyK"
-  ],
-  "Mcxbo" : 6662.3999999999996,
-  "jePaB" : false,
-  "BzgpO" : [
-    "zzWjA",
-    "hHkXT",
-    "XYfLj"
-  ],
-  "mlyTE" : true
-}
-"""
+            {
+              "FDnzT" : {
+                "nKIBe" : [
+                  "asoak",
+                  "VpADx",
+                  "MuMbP"
+                ],
+                "knsKe" : true
+              },
+              "ZCJuS" : [
+                "USnLi",
+                "tPTLj",
+                "zIjyK"
+              ],
+              "Mcxbo" : 6662.3999999999996,
+              "jePaB" : false,
+              "BzgpO" : [
+                "zzWjA",
+                "hHkXT",
+                "XYfLj"
+              ],
+              "mlyTE" : true
+            }
+            """
         
         if let data = jsonStr.data(using: .utf8),
            let dict = try? JSONSerialization.jsonObject(with: data) {
@@ -82,7 +65,7 @@ final class DEMOTests: XCTestCase {
         var dict2: [String: Codable] =
         [
             "name": "xiaoming",
-//            "age": "6"
+            //            "age": "6"
             "friend": [1, 3, 5]
         ]
         
@@ -90,15 +73,8 @@ final class DEMOTests: XCTestCase {
         print("person3 = ", person3)
         
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }
+
 
 struct Person: Model {
     var name: String = "none"
@@ -126,13 +102,4 @@ class MyObj: Model {
     var BzgpO: [String]?
     var mlyTE: Bool?
     var vvv: CGFloat? = 0
-}
-
-
-protocol CodableJson {
-    
-}
-
-extension Dictionary: CodableJson where Key : Codable, Value: Model {
-    
 }
